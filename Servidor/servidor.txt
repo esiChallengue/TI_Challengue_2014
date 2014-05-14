@@ -1,2 +1,10 @@
-   Claves
-----------------
+
+http://apps.cavesquimo.es
+
+-----------------------------
+Gestor de base de datos phpmyadmin
+
+http://mysql.cavesquimo.es
+
+usuario: apps_sql
+password: etsi123456
