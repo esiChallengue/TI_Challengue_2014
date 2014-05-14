@@ -1,0 +1,295 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefef">
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutOpcionesExt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutOpcionesInt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bordes_redondos"
+        android:layout_marginTop="20dp"
+        android:padding="10dp">
+
+        <FrameLayout
+            android:id="@+id/FrameLayoutOpcionesLinea1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre servidor 1: "
+            android:id="@+id/textViewServer1Name"
+            android:layout_gravity="left"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"/>
+
+        <EditText
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextServer1Name"
+            android:inputType="textPersonName"
+            android:layout_gravity="left"
+            android:layout_marginLeft="140dp"
+            android:textSize="14dp"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/FrameLayoutOpcionesLinea2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/FrameLayoutOpcionesLinea1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ip: "
+            android:id="@+id/textViewServer1Ip"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextServer1Ip"
+            android:inputType="textPersonName"
+            android:layout_gravity="left"
+            android:textSize="14dp"
+            android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Puerto: "
+                android:id="@+id/textViewServer1Puerto"
+                android:layout_gravity="left"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextServer1Puerto"
+                android:inputType="number"
+                android:layout_gravity="left"
+                android:textSize="14dp"
+                android:layout_marginLeft="240dp"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/FrameLayoutOpcionesLinea3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/FrameLayoutOpcionesLinea2">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Parámetros: "
+                android:id="@+id/textViewServer1Parametros"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextServer1Parametros"
+                android:inputType="textPersonName"
+                android:layout_gravity="left"
+                android:textSize="14dp"
+                android:layout_marginLeft="90dp"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/FrameLayoutOpcionesLinea4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/FrameLayoutOpcionesLinea3">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Passphrase: "
+                android:id="@+id/textViewServer1Passphrase"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextServer1Passphrase"
+                android:inputType="textPassword"
+                android:layout_gravity="left"
+                android:textSize="14dp"
+                android:layout_marginLeft="90dp"/>
+        </FrameLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutOpcionesInt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bordes_redondos"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:layout_below="@id/relativeLayoutOpcionesInt1">
+
+        <FrameLayout
+            android:id="@+id/FrameLayoutOpcionesLinea5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre servidor 2: "
+                android:id="@+id/textViewServer2Name"
+                android:layout_gravity="left"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <EditText
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextServer2Name"
+                android:inputType="textPersonName"
+                android:layout_gravity="left"
+                android:textSize="14dp"
+                android:layout_marginLeft="140dp"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/FrameLayoutOpcionesLinea6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/FrameLayoutOpcionesLinea5">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ip: "
+                android:id="@+id/textViewServer2Ip"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:layout_width="155dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextServer2Ip"
+                android:inputType="textPersonName"
+                android:layout_gravity="left"
+                android:textSize="14dp"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Puerto: "
+                android:id="@+id/textViewServer2Puerto"
+                android:layout_gravity="left"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextServer2Puerto"
+                android:inputType="number"
+                android:layout_gravity="left"
+                android:textSize="14dp"
+                android:layout_marginLeft="240dp"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/FrameLayoutOpcionesLinea7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/FrameLayoutOpcionesLinea6">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Parámetros: "
+                android:id="@+id/textViewServer2Parametros"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextServer2Parametros"
+                android:inputType="textPersonName"
+                android:layout_gravity="left"
+                android:textSize="14dp"
+                android:layout_marginLeft="90dp"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/FrameLayoutOpcionesLinea8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/FrameLayoutOpcionesLinea7">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Passphrase: "
+                android:id="@+id/textViewServer2Passphrase"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextServer2Passphrase"
+                android:inputType="textPassword"
+                android:layout_gravity="left"
+                android:textSize="14dp"
+                android:layout_marginLeft="90dp"/>
+        </FrameLayout>
+ </RelativeLayout>
+
+   <FrameLayout
+     android:id="@+id/FrameLayoutOpcionesLineaSave"
+     android:layout_below="@id/relativeLayoutOpcionesInt2"
+     android:background="@drawable/bordes_redondos_2"
+     android:layout_centerHorizontal="true"
+     android:layout_marginTop="40dp"
+     android:layout_width="250dp"
+     android:layout_height="40dp"
+     android:visibility="invisible">
+
+       <ImageView
+           android:id="@+id/imageViewTickOK"
+           android:src="@drawable/tickok"
+           android:scaleType="fitXY"
+           android:layout_width="20dp"
+           android:layout_height="20dp"
+           android:layout_marginTop="9dp"
+           android:layout_marginLeft="18dp"
+           android:layout_gravity="left" />
+
+        <TextView
+            android:id="@+id/textViewOpcionesSaved"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Opciones guardadas"
+            android:textSize="20dp"
+            android:textColor="#4099FF"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="50dp"
+            android:layout_gravity="left"/>
+    </FrameLayout>
+</RelativeLayout>
+
+</ScrollView>

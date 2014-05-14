@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TrackingNevera.iml" filepath="$PROJECT_DIR$/TrackingNevera.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TrackingNevera/TrackingNevera-TrackingNevera.iml" filepath="$PROJECT_DIR$/TrackingNevera/TrackingNevera-TrackingNevera.iml" />
+    </modules>
+  </component>
+</project>
+
