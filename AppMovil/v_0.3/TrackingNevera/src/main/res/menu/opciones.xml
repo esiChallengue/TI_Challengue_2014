@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.pakete.raspdomo.PrincipalActivity" >
+
+
+    <!-- Search, should appear as action button -->
+    <item android:id="@+id/action_save"
+        android:icon="@drawable/ic_action_save"
+        android:title="@string/action_save"
+        android:showAsAction="ifRoom" />
+
+    <!-- Search, should appear as action button -->
+    <item android:id="@+id/action_reload"
+        android:icon="@drawable/ic_action_refresh"
+        android:title="@string/action_reload"
+        android:showAsAction="ifRoom" />
+
+
+</menu>
