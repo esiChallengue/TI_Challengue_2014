@@ -1,0 +1,6 @@
+Android Studio Version 0.5.2
+-----------------------------
+http://developer.android.com/sdk/installing/studio.html
+
+ChangeLOG
+-----------------------------

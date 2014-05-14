@@ -1,0 +1,23 @@
+Entorno de desarrollo
+----------------------
+Energia --> http://energia.nu/download/
+
+
+
+
+Chip a usar: MPS430G2553
+
+ Materiales
+-----------------
+1x MSP430G2553
+1x Transistor NPN 2n2222
+1x Batería MAX 3.3V (Posible uso de regulador de voltaje a 3V con una LI-Po de 3.7V ?)
+1x Acelerómetro (Entrada analógica)
+1x Modulo bluetooth
+1x Led encendido (rojo)
+1x Led transmisión (naranja)
+1x Led conexión establecidad con Movil (verde)
+
+
+* Resistencias y condensadores para adecuar/estabilizar la tensión 
+* Launchpad MSP430G de Texas Instruments
