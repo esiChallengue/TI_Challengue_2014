@@ -1,10 +1,25 @@
-
+Web para visualizar el tracking
+----------------------------------
 http://apps.cavesquimo.es
 
------------------------------
+
+
+
 Gestor de base de datos phpmyadmin
+-----------------------------
 
 http://mysql.cavesquimo.es
 
 usuario: apps_sql
 password: etsi123456
+
+
+Modo de Uso
+-----------------------------
+Para ver información simple del tracking
+http://apps.cavesquimo.es
+
+Para registra un evento
+http://apps.cavesquimo.es/?cmd=registrarEvento&tracking_number=[...]&notas=[...]
+http://apps.cavesquimo.es/?cmd=registrarEvento&tracking_number=23490dfa3r&notas=loquesea
+
