@@ -3,5 +3,8 @@ Android Studio Version 0.5.2 + JAVA 7 SDK 64bits
 http://developer.android.com/sdk/installing/studio.html
 http://www.oracle.com/technetwork/es/java/javase/downloads/jdk7-downloads-1880260.html
 
-ChangeLOG
------------------------------
+
+Referencias
+-------------
+http://www.sgoliver.net/blog/?p=1887#
+http://danielggarcia.wordpress.com/2013/10/19/bluetooth-i-activando-y-desactivando-el-bluetooth-en-android/
