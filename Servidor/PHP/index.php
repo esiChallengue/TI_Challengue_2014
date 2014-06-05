@@ -41,7 +41,7 @@ if($cmd_get == "registrarEvento"){ registrarEvento($tracking_number_get, $notas_
 
     <div id="content">
     <? $conn = mysql_connect($host, $user, $pass); mysql_select_db($database);
-       $result = mysql_query("SELECT * FROM registros ORDER BY id_track DESC", $conn);
+       $result = mysql_query("SELECT * FROM registros ORDER BY id_track DESC LIMIT 25", $conn);
        if ($row = mysql_fetch_array($result)){ do {
        echo "<p>".$row["id_track"]." - ".$row["notas"]." --".$row["hora"]."</p>";
        } while ($row = mysql_fetch_array($result)); } 
