@@ -81,6 +81,7 @@ int leerTemperatura(){
    }                                          
   
   tempMedia /= MUESTRAS; //dividimos por el número de muestras 
+  tempMedia = tempMedia/10;
  
   BTSerial.println("Temp:"+tempMedia); //
   

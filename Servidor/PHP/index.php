@@ -8,6 +8,35 @@ $titulo = "";
 //incluimos fichero de configurar para conexiones BD y parametros fijos
 include("config.php");
 
+function generarMapaTracking($tracking_number){
+	//volvemos a hacer un include dentro de la funcion para definir las variables locales
+  include("config.php");
+  $coordenadas_track = "";
+  
+  $conn = mysql_connect($host, $user, $pass); mysql_select_db($database);
+  $result = mysql_query("SELECT * FROM registros ORDER BY id_track DESC LIMIT 25", $conn);
+  if ($row = mysql_fetch_array($result)){ do {
+  	$temp = $row["notas"];
+    $cachos = explode("||", $temp);
+    $latitud = $cachos[0];
+    $longitud = $cachos[1];
+    $coordenadas_track = $coordenadas_track."\r".$latitud.",".$longitud.",0";
+  } while ($row = mysql_fetch_array($result)); }  
+  
+	//Creamos un fichero con nombre aleatorio y lo devolvemos para actualizar la cache de google
+	$content = file_get_contents('track_base.KML');
+	$pieces = explode("<coordinates>", $content);
+	$contenido_total = $pieces[0]."<coordinates>".$coordenadas_track.$pieces[1];
+	$num_aleatorio = rand(1,4000);
+	$fichero = "maps_track/track_98377RF_".$num_aleatorio.".KML";
+  $fp = fopen($fichero,"wb");
+  fwrite($fp,$contenido_total);
+  fclose($fp);
+  
+  return $fichero;
+	
+}
+
 function registrarEvento($tracking_number, $notas){
 	    //volvemos a hacer un include dentro de la funcion para definir las variables locales
       include("config.php");
