@@ -1,0 +1,67 @@
+ 
+
+  ----------------------------------------
+  - WEB/SERVIDOR
+  ----------------------------------------
+  
+  * Soporte para hacer seguimiento de múltiples CHIPS (que van dentro en la nevera) - 100%
+    (se muestran bloques con el numero de referencia de cada chip, donde al pulsar
+     nos muestra las 25 ultimas posiciones llegadas, y el mapa de seguimiento)
+
+  * Mostrar seguimiento en Mapas de Google (Generación KML a partir de las posiciones GPS) - 100%
+    (cada vez que se refresca/ejecuta la página se genera un fichero .KML con nombre
+     aleatorio para que se muestre correctamente el fichero refrescado, nos saltmos
+     las caches y problemas similares)
+  
+  * Auto refresco cada 20 segundos de la página (datos continuamente actualizados) - 100% 
+
+
+  ----------------------------------------
+  - CHIP/MCU en la nevera
+  ----------------------------------------
+
+  * Mide la temperatura de la nevera a partir del sensor del chip (media de 256 muestras) - 100%
+    (se toman 256 muestras, se les hace la media, se escala el resultado, y se envía por
+     bluetooth cada 10 segundos al dispositivo vinculado)
+
+  * Testeo de los leds al arrancar (juego de luces) - 100%
+  
+  * Modulo Bluetooth, programado con un nombre de enlace unico (numero de tracking/referencia) - 100%
+    (cada bluetooth se debe programar para asignarle un unico numero de refrencia o
+     tracking de seguimiento, dicha referencia se coge para identificar con qué dispositivo
+     estamos vinculados, también enviamos dicha referencia a la aplicación del móvil para
+     posteriormente enviar al servidor referencia+coordenadasGPS+temperatura)
+
+  * Reinicio cada 25 segundos del procesador si no se recibe un paquete "alive" - 100%
+    (cada 25 segundos, si el chip no recibe el caracter "a", se reiniciará,
+     esto se ha creado, para reiniciar la conexión por si ocurre algún fallo
+     inesperado, o si por interferencias el chip empieza a hacer cosas raras,
+     dicho caracter lo envía el móvil cuando están vinculados)
+
+
+  ----------------------------------------
+  - Android
+  ----------------------------------------
+
+  * Obtener las coordenadas GPS y la última ubicación conocida - 100%
+
+  * Detectar si los chips Bluetooth y GPS del móvil están encendidos - 100%
+
+  * Crear una base de datos donde se guarden las configuraciones - 100%
+    (url del servidor, puerto del servidor, clave de paso,
+     numero de referencia obtenido del gps la ultima vez,
+     nombre amistoso del dispositivo)
+
+  * Recibir información de temperatura del chip por bluetooth - 100%
+
+  * Enviar por bluetooth el caracter "a", para que el chip se mantenga vivo - 100% 
+
+  * Enviar información cada 10 segundos con las coordenadas, temperaturas y referencia - 100%
+    (cada 10 segundos, se refresca la pantalla de la aplicación mostrando los ultimos
+     valores, se enviá un paquete con el caracter "a" al chip para mantenerlo vivo,
+     se envía los datos al servidor)
+
+  * Enviar numero del movil donde está instalada la aplicación con el resto de datos - 0%
+  
+  * Mantener la aplicación viva incluso con la pantalla apagad y bloqueada - 0%
+ 
