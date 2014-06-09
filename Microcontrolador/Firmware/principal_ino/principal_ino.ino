@@ -6,6 +6,7 @@
 const int ledEncendido  = P2_1; //Indicador de encendido
 const int ledTx = P1_5; //BT conexion establecida
 const int ledRx = P2_0; //Led transmisión BT RX/TX
+const int pinRst= P1_3; //Pin encedido bluetooth
 
 SoftwareSerial BTSerial(RxD, TxD);
 const int MUESTRAS = 256;
@@ -19,6 +20,9 @@ void setup()
   pinMode(ledEncendido, OUTPUT);
   pinMode(ledTx, OUTPUT);
   pinMode(ledRx, OUTPUT);
+  pinMode(pinRst, OUTPUT);
+  delay(100);
+  digitalWrite(pinRst, HIGH);
   
   // Estado inicial
   arranqueLuces(70, 3);
@@ -54,6 +58,7 @@ void loop()
   if (sigoVivo >= 12){
   BTSerial.println("Reiniciando conexion :(");
   digitalWrite(ledRx, LOW);
+  digitalWrite(pinRst, LOW);
   delay(5000); //Esperamos un rattito para ver que se ha pagado el led y reiniciamos
   resetFunc();  //call reset
   }
