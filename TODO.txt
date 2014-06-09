@@ -61,7 +61,9 @@
      valores, se enviá un paquete con el caracter "a" al chip para mantenerlo vivo,
      se envía los datos al servidor)
 
-  * Enviar numero del movil donde está instalada la aplicación con el resto de datos - 0%
+  * Enviar numero del movil donde está instalada la aplicación con el resto de datos - 100%
   
-  * Mantener la aplicación viva incluso con la pantalla apagad y bloqueada - 0%
+  * Mantener la aplicación viva incluso con la pantalla apagada y bloqueada - 0%
+
+  * Rediseño de los layouts para mostrar mejor la información - 0%
  

@@ -1,35 +1,17 @@
-#include <SoftwareSerial.h>
-
-#define RxD P2_2
-#define TxD P2_3
-
-SoftwareSerial BTSerial(RxD, TxD);
-
 void setup()
 {
-  
-
-  
+    
   delay(500);
   
-  BTSerial.flush();
-  delay(500);
-  BTSerial.begin(9600);
-  Serial.begin(9600);
-  Serial.println("Enter AT commands:");
-
-  BTSerial.print("AT\r\n");
-  delay(100);
-
+ pinMode(P1_1, OUTPUT);
+ digitalWrite(P1_1, HIGH);
+ 
+ pinMode(P1_2, OUTPUT);
+ digitalWrite(P1_2, HIGH);
 }
 
 void loop()
 {
 
-  if (BTSerial.available())
-    Serial.write(BTSerial.read());
-
-  if (Serial.available())
-    BTSerial.write(Serial.read());
 
 }

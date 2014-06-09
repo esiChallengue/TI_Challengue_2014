@@ -32,10 +32,15 @@ void setup()
   BTSerial.flush();
   delay(500);
   
-  BTSerial.println("Conexión Establecida");
+  //BTSerial.println("Conexión Establecida");
     //Configurar el ADC para que use la referencia interna de 1.5V
   analogReference(INTERNAL1V5);
-
+  
+  delay(1000);
+  //NECESITA EL PIN RESET EN HIGH y un baudratio de 38400 o 9600, el que funcione
+  //BTSerial.print("at+name=93987RF\r\n");
+  //BTSerial.print("AT+UART=9600,1,2,\r\n");
+  delay(1000);
 }
 
 //Reinicio por software
@@ -44,8 +49,9 @@ void(* resetFunc) (void) = 0; //declare reset function @ address 0
 void loop()
 {
 
+  
   //Sinos pasamos de veces sin que el movil contacte con el micro reiniciamos la conexión
-  if (sigoVivo >= 10){
+  if (sigoVivo >= 12){
   BTSerial.println("Reiniciando conexion :(");
   digitalWrite(ledRx, LOW);
   delay(5000); //Esperamos un rattito para ver que se ha pagado el led y reiniciamos
@@ -64,7 +70,7 @@ void loop()
     //Si recivimos el caracter a mantemeos la conexión viva
     //reiniciarla
      if (command == 'a'){
-      BTSerial.println("Parpadeo RX led || Seguimos vivos");
+      BTSerial.println("Alive packet");
       digitalWrite(ledRx, HIGH);
       sigoVivo = 0;
     }
