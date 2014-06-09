@@ -63,7 +63,7 @@
 
   * Enviar numero del movil donde está instalada la aplicación con el resto de datos - 100%
   
-  * Mantener la aplicación viva incluso con la pantalla apagada y bloqueada - 0%
+  * Mantener la aplicación viva incluso con la pantalla apagada y bloqueada - 100%
 
   * Rediseño de los layouts para mostrar mejor la información - 0%
  

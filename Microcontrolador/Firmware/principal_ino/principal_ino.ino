@@ -40,7 +40,7 @@ void setup()
   //NECESITA EL PIN RESET EN HIGH y un baudratio de 38400 o 9600, el que funcione
   //BTSerial.print("at+name=93987RF\r\n");
   //BTSerial.print("AT+UART=9600,1,2,\r\n");
-  delay(1000);
+
 }
 
 //Reinicio por software
