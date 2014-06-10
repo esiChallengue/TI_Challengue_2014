@@ -1,0 +1,263 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefef">
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutServidorExt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayoutServidorInt1"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bordes_redondos"
+            android:layout_marginTop="20dp"
+            android:padding="10dp">
+
+            <FrameLayout
+                android:id="@+id/FrameLayoutServidorLinea0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Información sobre el Dispositivo/GPS"
+                    android:id="@+id/textViewServer1TitleGeneral"
+                    android:layout_gravity="center"
+                    android:textSize="7pt"
+                    android:textAlignment="center"/>
+
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/FrameLayoutServidorLinea00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/FrameLayoutServidorLinea0">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chip GPS: "
+                    android:id="@+id/textViewServer1GPS"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="7pt"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="estado desconocido"
+                    android:id="@+id/textViewServer1StatusGPS"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="90dp"
+                    android:textSize="7pt"/>
+            </FrameLayout>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/relativeLayoutServidorInt2"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bordes_redondos"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:layout_below="@id/relativeLayoutServidorInt1">
+
+            <FrameLayout
+                android:id="@+id/FrameLayoutServidorLinea2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Coordenadas GPS actuales"
+                    android:id="@+id/textViewServerTitle2"
+                    android:layout_gravity="center"
+                    android:textSize="7pt"
+                    android:textAlignment="center"/>
+
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/FrameLayoutServidorLinea3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/FrameLayoutServidorLinea2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Latitud: "
+                    android:id="@+id/textViewServerLatitud"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="7pt"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00000000"
+                    android:id="@+id/textViewServerLatitudNumber"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="70dp"
+                    android:textSize="7pt"/>
+
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/FrameLayoutServidorLinea4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/FrameLayoutServidorLinea3">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Longitud: "
+                    android:id="@+id/textViewServerLongitud"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="7pt"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00000000"
+                    android:layout_marginLeft="90dp"
+                    android:id="@+id/textViewServerLongitudNumber"
+                    android:layout_gravity="left"
+                    android:textSize="7pt"/>
+
+            </FrameLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayoutServidorInt3"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bordes_redondos"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:layout_below="@id/relativeLayoutServidorInt2">
+
+            <FrameLayout
+                android:id="@+id/FrameLayoutServidorLinea5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estado conexión Bluetooth"
+                    android:id="@+id/textViewServerTitle3"
+                    android:layout_gravity="center"
+                    android:textSize="7pt"
+                    android:textAlignment="center"/>
+
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/FrameLayoutServidorLinea6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/FrameLayoutServidorLinea5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estado: "
+                    android:id="@+id/textViewServerBT"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="7pt"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="desconocido"
+                    android:layout_marginLeft="70dp"
+                    android:id="@+id/textViewServerBTEstado"
+                    android:layout_gravity="left"
+                    android:textSize="7pt"/>
+
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/FrameLayoutServidorLinea7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/FrameLayoutServidorLinea6">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre enlace: "
+                    android:id="@+id/textViewServerNombreEnlace"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="7pt"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="desconocido"
+                    android:layout_marginLeft="130dp"
+                    android:id="@+id/textViewServerNombreEnlaceValue"
+                    android:layout_gravity="left"
+                    android:textSize="7pt"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/FrameLayoutServidorLinea8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/FrameLayoutServidorLinea7">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temperatura nevera: "
+                    android:id="@+id/textViewChipTemperatura"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="7pt"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="desconocido"
+                    android:layout_marginLeft="170dp"
+                    android:id="@+id/textViewChipTemperaturaValue"
+                    android:layout_gravity="left"
+                    android:textSize="7pt"/>
+
+            </FrameLayout>
+        </RelativeLayout>
+
+
+    <RelativeLayout
+            android:id="@+id/relativeLayoutServidorInt4"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bordes_redondos"
+            android:layout_marginTop="20dp"
+            android:padding="0dp"
+            android:layout_below="@id/relativeLayoutServidorInt3">
+
+        </RelativeLayout>
+
+
+</RelativeLayout>
+
+</ScrollView>

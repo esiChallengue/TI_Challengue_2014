@@ -32,7 +32,7 @@ void setup()
   
   // Configuracion del puerto serie por software
   // para comunicar con el modulo HC-05
-  BTSerial.begin(9600);
+  BTSerial.begin(19200);
   BTSerial.flush();
   delay(500);
   
@@ -41,9 +41,10 @@ void setup()
   analogReference(INTERNAL1V5);
   
   delay(1000);
-  //NECESITA EL PIN RESET EN HIGH y un baudratio de 38400 o 9600, el que funcione
-  //BTSerial.print("at+name=93987RF\r\n");
-  //BTSerial.print("AT+UART=9600,1,2,\r\n");
+  //NECESITA EL PIN RESET EN HIGH y un baudratio de 38400 para que funcione
+  //BTSerial.print("at+name=93948RF\r\n");
+  //delay(600);
+  //BTSerial.print("AT+UART=19200,0,0\r\n");
 
 }
 

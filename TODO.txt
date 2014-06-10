@@ -65,5 +65,5 @@
   
   * Mantener la aplicación viva incluso con la pantalla apagada y bloqueada - 100%
 
-  * Rediseño de los layouts para mostrar mejor la información - 0%
+  * Rediseño de los layouts para mostrar mejor la información - 100%
  

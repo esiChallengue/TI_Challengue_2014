@@ -1,0 +1,4 @@
+** Para programar el modulo BLuetooth ponerlo el BTSerial.begin a 38400 baudios, mandar los comandos AT
+   con un delay de minimo 600ms entre cada uno
+
+** Despues cambiar el BTSerial.begin por el nuevo baudrate si es que se ha cambiado
