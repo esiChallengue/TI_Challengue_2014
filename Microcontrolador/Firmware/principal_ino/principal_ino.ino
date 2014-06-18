@@ -4,8 +4,8 @@
 #define TxD P2_3
 
 const int ledEncendido  = P2_1; //Indicador de encendido
-const int ledTx = P1_5; //BT conexion establecida
-const int ledRx = P2_0; //Led transmisión BT RX/TX
+const int ledTx = P1_5; //Led transmisión BT RX/TX
+const int ledRx = P2_0; //BT conexion establecida
 const int pinRst= P1_3; //Pin encedido bluetooth
 const int pinKey= P2_4; //Pin para entrar en modo programacion del bluetooth
 
@@ -70,6 +70,7 @@ void loop()
   //Si nos pasamos de veces sin que el movil contacte con el micro reiniciamos la conexión
   if (sigoVivo >= 12){
   BTSerial.println("Reiniciando conexion :(");
+  digitalWrite(ledTx, HIGH);
   digitalWrite(ledRx, LOW); //Apagamos el led que nos indica que la conexión está viva
   digitalWrite(pinRst, LOW); //Apagamos el modulo bluetooth
   delay(5000); //Esperamos un ratito para ver que se ha pagado el led y reiniciamos

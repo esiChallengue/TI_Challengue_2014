@@ -39,12 +39,12 @@ body{font-family:"Lucida Grande",Verdana,Arial,"Bitstream Vera Sans",sans-serif;
 #contentMapa {
 position: absolute;
 top: 10px;
-left:630px;
+left:700px;
 background:#555d55; 
 color:#fff; 
 padding: 5px;
-height: 500px; 
-width: 600px; 
+height: 600px; 
+width: 700px; 
 margin-top: 5px; 
 margin-right: auto; 
 margin-bottom: 5px; 

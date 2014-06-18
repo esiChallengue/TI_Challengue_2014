@@ -2,6 +2,14 @@
 //Metodo para recibir los parametros por medio de GET
 $tracking_number_get = $_GET["tracking_number"];
 $notas_get = $_GET["notas"];
+$nombreOperario_get = $_GET["nombreOperario"];
+$apellidosOperario_get = $_GET["apellidosOperario"];
+$dniOperario_get = $_GET["dniOperario"];
+$numeroTelefono_get = $_GET["telefono"];
+$latitud_get = $_GET["latitud"];
+$longitud_get = $_GET["longitud"];
+$temperatura_get = $_GET["temperatura"];
+
 $cmd_get = $_GET["cmd"];
 $titulo = "";
 $idMapaKML = "";
@@ -17,15 +25,13 @@ function generarMapaTracking($tracking_number){
   $conn = mysql_connect($host, $user, $pass); mysql_select_db($database);
   $result = mysql_query("SELECT * FROM registros WHERE tracking_number='$tracking_number' ORDER BY id_track DESC LIMIT 70", $conn);
   if ($row = mysql_fetch_array($result)){ do {
-  	$temp = $row["notas"];
-    $cachos = explode("||", $temp);
-    $latitud = $cachos[0];
-    $longitud = $cachos[1];
+    $longitud = $row["longitud"];
+    $latitud = $row["latitud"];
     $coordenadas_track = $coordenadas_track."\r".$longitud.",".$latitud."";
   } while ($row = mysql_fetch_array($result)); }  
   
 	//Creamos un fichero con nombre aleatorio y lo devolvemos para actualizar la cache de google
-	$content = file_get_contents('track_base.KML');
+	$content = file_get_contents('track_base.KML'); 
 	$pieces = explode("<coordinates>", $content);
 	$contenido_total = $pieces[0]."<coordinates>".$coordenadas_track.$pieces[1];
 	$num_aleatorio = rand(1,4000);
@@ -39,17 +45,18 @@ function generarMapaTracking($tracking_number){
 	
 }
 
-function registrarEvento($tracking_number, $notas){
+function registrarEvento($tracking_number, $notas, $nombreOperario, $apellidosOperario, $dniOperario, $numeroTelefono, $latitud, $longitud, $temperatura){
 	    //volvemos a hacer un include dentro de la funcion para definir las variables locales
       include("config.php");
       //insertamos en BD +id+cmd+timestamp+status
-      $insertar = "INSERT INTO registros (tracking_number, notas) VALUES ('$tracking_number', '$notas')";
+      $insertar = "INSERT INTO registros (tracking_number, notas, nombreOperario, apellidosOperario, dniOperario, numeroTelefono, latitud, longitud, temperatura) 
+      VALUES ('$tracking_number', '$notas', '$nombreOperario', '$apellidosOperario', '$dniOperario', '$numeroTelefono', '$latitud', '$longitud', '$temperatura')";
       mysql_query($insertar, $conn);
       mysql_close($conn);
 }
 
 
-if($cmd_get == "registrarEvento"){ registrarEvento($tracking_number_get, $notas_get);}
+if($cmd_get == "registrarEvento"){ registrarEvento($tracking_number_get, $notas_get, $nombreOperario_get, $apellidosOperario_get, $dniOperario_get, $numeroTelefono_get, $latitud_get, $longitud_get, $temperatura_get);}
 if($cmd_get == "consultarEventos"){ $titulo = "  ".$tracking_number_get; $idMapaKML = generarMapaTracking($tracking_number_get);}
 ?>
 
@@ -81,10 +88,10 @@ if($cmd_get == "consultarEventos"){ $titulo = "  ".$tracking_number_get; $idMapa
      	 $conn = mysql_connect($host, $user, $pass); mysql_select_db($database);
        $result = mysql_query("SELECT * FROM registros WHERE tracking_number='$tracking_number_get' ORDER BY id_track DESC LIMIT 25", $conn);
        if ($row = mysql_fetch_array($result)){ do {
-       echo "<p>".$row["id_track"]." - ".$row["notas"]." --".$row["hora"]."</p>";
+       echo "<p>".$row["id_track"]." | ".$row["latitud"]." , ".$row["longitud"].", ".$row["numeroTelefono"].", ".$row["temperatura"].", ".$row["nombreOperario"].", ".$row["apellidosOperario"].", ".$row["dniOperario"].", ".$row["hora"]."</p>";
        } while ($row = mysql_fetch_array($result)); } ?>  	
        <div id="contentMapa">
-       <iframe src="https://maps.google.com/maps?q=http:%2F%2Fapps.cavesquimo.es%2Fmaps_track%2F<? echo $idMapaKML; ?>&amp;t=k&amp;om=1&amp;ie=UTF8&amp;output=embed" width="600" height="500" frameborder="0" name="frameMapa" id="frameMapa" style="border:0"></iframe>	
+       <iframe src="https://maps.google.com/maps?q=http:%2F%2Fapps.cavesquimo.es%2Fmaps_track%2F<? echo $idMapaKML; ?>&amp;t=k&amp;om=1&amp;ie=UTF8&amp;output=embed" width="700" height="600" frameborder="0" name="frameMapa" id="frameMapa" style="border:0"></iframe>	
        </div> 
        
      <? } ?>    
