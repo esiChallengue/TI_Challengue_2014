@@ -15,7 +15,7 @@ function generarMapaTracking($tracking_number){
   $coordenadas_track = "";
   
   $conn = mysql_connect($host, $user, $pass); mysql_select_db($database);
-  $result = mysql_query("SELECT * FROM registros ORDER BY id_track DESC LIMIT 70", $conn);
+  $result = mysql_query("SELECT * FROM registros WHERE tracking_number='$tracking_number' ORDER BY id_track DESC LIMIT 70", $conn);
   if ($row = mysql_fetch_array($result)){ do {
   	$temp = $row["notas"];
     $cachos = explode("||", $temp);

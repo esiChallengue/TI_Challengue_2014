@@ -7,45 +7,58 @@ const int ledEncendido  = P2_1; //Indicador de encendido
 const int ledTx = P1_5; //BT conexion establecida
 const int ledRx = P2_0; //Led transmisión BT RX/TX
 const int pinRst= P1_3; //Pin encedido bluetooth
+const int pinKey= P2_4; //Pin para entrar en modo programacion del bluetooth
 
 SoftwareSerial BTSerial(RxD, TxD);
 const int MUESTRAS = 256;
 
 int sigoVivo = 0;
+const int modoProgramacion = 0;
 
 void setup()
 {
-  
+ 
    // initialize the digital pin as an output.
   pinMode(ledEncendido, OUTPUT);
   pinMode(ledTx, OUTPUT);
   pinMode(ledRx, OUTPUT);
   pinMode(pinRst, OUTPUT);
-  delay(100);
-  digitalWrite(pinRst, HIGH);
+  pinMode(pinKey, OUTPUT);
+
   
   // Estado inicial
-  arranqueLuces(70, 3);
+  arranqueLuces(70, 3); //hacemos test de luces
   delay(300);
   digitalWrite(ledEncendido, HIGH);
    
   
-  // Configuracion del puerto serie por software
-  // para comunicar con el modulo HC-05
-  BTSerial.begin(19200);
-  BTSerial.flush();
-  delay(500);
+  if(modoProgramacion == 0){
+    // Configuracion del puerto serie por software
+    // para comunicar con el modulo HC-05 
+    digitalWrite(pinKey, LOW); // Modo comunicación bluetooth
+    delay(100); // Nos aseguramos de que pille que el pin está apagado
+    digitalWrite(pinRst, HIGH); //Encendemos el modulo bluetooth
+    delay(500); //Espereamos un poco a que se caliente el chip
+    BTSerial.begin(19200); //Baudios configurados 19200
+    BTSerial.flush();
+    delay(500);
+    //BTSerial.println("Conexión Establecida");
+  }else{
+    //NECESITA EL PIN KEY EN HIGH y un baudratio de 38400 para que funcione
+    digitalWrite(pinKey, HIGH); // Modo configuración bluetooth
+    delay(100); //Nos aseguramos de que pille que el pin está encendido
+    digitalWrite(pinRst, HIGH); //Encendemos el modulo bluetooth
+    BTSerial.begin(38400); //Baudios necesarios para el modo programacion
+    BTSerial.flush();
+    delay(1000);
+    BTSerial.print("at+name=65878RA\r\n"); //Comando para cambiar el nombre del enlace
+    delay(600);
+    //BTSerial.print("AT+UART=19200,0,0\r\n"); //Comando para ajustar los baudios
+  }
   
-  //BTSerial.println("Conexión Establecida");
-    //Configurar el ADC para que use la referencia interna de 1.5V
+  //Configurar el ADC para que use la referencia interna de 1.5V
   analogReference(INTERNAL1V5);
-  
-  delay(1000);
-  //NECESITA EL PIN RESET EN HIGH y un baudratio de 38400 para que funcione
-  //BTSerial.print("at+name=93948RF\r\n");
-  //delay(600);
-  //BTSerial.print("AT+UART=19200,0,0\r\n");
-
+  delay(1000); // Esperamos un poco
 }
 
 //Reinicio por software
@@ -53,15 +66,14 @@ void(* resetFunc) (void) = 0; //declare reset function @ address 0
 
 void loop()
 {
-
-  
-  //Sinos pasamos de veces sin que el movil contacte con el micro reiniciamos la conexión
+ 
+  //Si nos pasamos de veces sin que el movil contacte con el micro reiniciamos la conexión
   if (sigoVivo >= 12){
   BTSerial.println("Reiniciando conexion :(");
-  digitalWrite(ledRx, LOW);
-  digitalWrite(pinRst, LOW);
-  delay(5000); //Esperamos un rattito para ver que se ha pagado el led y reiniciamos
-  resetFunc();  //call reset
+  digitalWrite(ledRx, LOW); //Apagamos el led que nos indica que la conexión está viva
+  digitalWrite(pinRst, LOW); //Apagamos el modulo bluetooth
+  delay(5000); //Esperamos un ratito para ver que se ha pagado el led y reiniciamos
+  resetFunc();  //reiniciamos el chip
   }
   
   // Esperamos ha recibir datos.
@@ -71,10 +83,10 @@ void loop()
     char command = BTSerial.read();
     BTSerial.flush();
     
-    // Qu hacer cuando recibe información
+    // Que hacer cuando recibe información
    
     //Si recivimos el caracter a mantemeos la conexión viva
-    //reiniciarla
+    //reiniciar la cuenta atras de sigoVivo
      if (command == 'a'){
       BTSerial.println("Alive packet");
       digitalWrite(ledRx, HIGH);
@@ -92,14 +104,14 @@ void loop()
   //Leemos la temperatura y la transmistimos por blueetooth
   leerTemperatura();
   sigoVivo++;
-  //Esperamos un rato para no gasta rmucha batería
+  //Esperamos un rato para no gaste mucha batería
    delay(5000);  
 }
 
 
 int leerTemperatura(){
   
-   long int temp = 0;       //almacenamos el valor leido de la temperatura
+   long int temp = 0;       // almacenamos el valor leido de la temperatura
    long int tempMedia = 0;  //ya que el termómetro es un dispositivo que genera una salida con mucho ruido
                          //lo leeremos varias veces y calcularemos la media para tener una medida mas precisa
    long int numMuestras = 0; 
@@ -112,6 +124,7 @@ int leerTemperatura(){
    }                                          
   
   tempMedia /= MUESTRAS; //dividimos por el número de muestras 
+  tempMedia = tempMedia - 150; //Ajustamos el offset(desviación de cada micro)
   
   BTSerial.println("Temp: "+ String(tempMedia)); //
 }

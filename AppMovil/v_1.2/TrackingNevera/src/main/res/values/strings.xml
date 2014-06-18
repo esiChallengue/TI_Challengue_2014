@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TrackingNevera</string>
+    <string name="app_versionCode">1.2</string>
+    <string name="app_versionName">Alpha Release</string>
+    <string name ="app_buildDate">18/06/2014</string>
+    <string name="app_developer">TI * Team</string>
+    <string name="app_contactEmail">alelucrod@gmail.com</string>
+
+    <string name="title_section1">Dispositivo</string>
+    <string name="title_section2">Opciones</string>
+
+    <string name="carpetaDestinoFichero">data/data/com.trackingnevera.app.trackingnevera.trackingnevera/temp/parseo.xml</string>
+    <string name="dataBaseName">trackingNevera.db</string>
+    <string name="directorioINT">data/data/com.trackingnevera.app.trackingnevera.trackingnevera/temp/</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_reload">Recargar</string>
+    <string name="action_save">Guardar</string>
+    <string name="action_about">Acerca de</string>
+
+</resources>
