@@ -1,19 +1,40 @@
+#include <String.h>
 #include <SoftwareSerial.h>
+#include <Wire.h>
 
 #define RxD P2_2
 #define TxD P2_3
 
-const int ledEncendido  = P2_1; //Indicador de encendido
-const int ledTx = P1_5; //Led transmisión BT RX/TX
-const int ledRx = P2_0; //BT conexion establecida
-const int pinRst= P1_3; //Pin encedido bluetooth
-const int pinKey= P2_4; //Pin para entrar en modo programacion del bluetooth
+#define ADXL345ADDRESS 0x53   //Dirección del acelerómetro
+#define DATAADDRESS 0x32      //Primer registro con los datos de los ejes
+#define POWER_CTL 0x2D        //Registro de control de energía
+#define POWER_CTL_VALUE 8     //Valor que cargaremos en POWER_CTL
+#define LENGTH 6   
+#define SCALE2G 0.0039
 
-SoftwareSerial BTSerial(RxD, TxD);
-const int MUESTRAS = 256;
+#define ledEncendido P2_1 //Indicador de encendido
+#define ledTx P1_5 //Led transmisión BT RX/TX
+#define ledRx P2_0 //BT conexion establecida
+#define pinRst P1_3 //Pin encedido bluetooth
+#define pinKey P2_4 //Pin para entrar en modo programacion del bluetooth
+#define modoProgramacion 0 //Entramos en modo programacion o no
 
-int sigoVivo = 0;
-const int modoProgramacion = 0;
+ SoftwareSerial BTSerial(RxD, TxD);
+ const int MUESTRAS = 256;
+ long int tempGlobal = 0;
+
+ int sigoVivo = 0;
+
+ //Variables globales del acelerometro
+ uint8_t* p_buffer = NULL;
+ int xAxis=0;    //Variables que usaremos para imprimir el resultado
+ int yAxis=0;
+ int zAxis=0;
+ 
+ float scaledXAxis = 0;    //Variables que usaremos para imprimir el resultado con una escala mas intuitiva
+ float scaledYAxis = 0;
+ float scaledZAxis = 0;
+
 
 void setup()
 {
@@ -29,8 +50,7 @@ void setup()
   // Estado inicial
   arranqueLuces(70, 3); //hacemos test de luces
   delay(300);
-  digitalWrite(ledEncendido, HIGH);
-   
+  digitalWrite(ledEncendido, HIGH);   
   
   if(modoProgramacion == 0){
     // Configuracion del puerto serie por software
@@ -51,7 +71,7 @@ void setup()
     BTSerial.begin(38400); //Baudios necesarios para el modo programacion
     BTSerial.flush();
     delay(1000);
-    BTSerial.print("at+name=65878RA\r\n"); //Comando para cambiar el nombre del enlace
+    BTSerial.print("at+name=95588RA\r\n"); //Comando para cambiar el nombre del enlace
     delay(600);
     //BTSerial.print("AT+UART=19200,0,0\r\n"); //Comando para ajustar los baudios
   }
@@ -59,6 +79,10 @@ void setup()
   //Configurar el ADC para que use la referencia interna de 1.5V
   analogReference(INTERNAL1V5);
   delay(1000); // Esperamos un poco
+  
+  //Configuramos el acelerometro
+  Wire.begin();  //Iniciamos el bus I2C en modo maestro
+  writeTo(ADXL345ADDRESS,POWER_CTL, POWER_CTL_VALUE);  //Antes de poder realizar mediciones se necesita configurar el registro de control de energía
 }
 
 //Reinicio por software
@@ -103,20 +127,34 @@ void loop()
   }
   
   //Leemos la temperatura y la transmistimos por blueetooth
-  leerTemperatura();
   sigoVivo++;
+  leerTemperatura();
+  delay(200);
+  medirPosicion();
+  delay(200);
+  //Enviamos los resultados
+   BTSerial.print("temp:");
+   BTSerial.print(tempGlobal);
+   BTSerial.print("|x-axis:"); //temperatura + x-axis + y-axis + z-axis
+   BTSerial.print(scaledXAxis);
+   BTSerial.print("|y-axis:");
+   BTSerial.print(scaledYAxis);
+   BTSerial.print("|z-axis:");
+   BTSerial.print(scaledZAxis);
+   BTSerial.print("\r\n");
   //Esperamos un rato para no gaste mucha batería
    delay(5000);  
 }
 
 
-int leerTemperatura(){
+/****************************** FUNCIONES Generales *******************************/
+
+ void leerTemperatura(){
   
    long int temp = 0;       // almacenamos el valor leido de la temperatura
-   long int tempMedia = 0;  //ya que el termómetro es un dispositivo que genera una salida con mucho ruido
-                         //lo leeremos varias veces y calcularemos la media para tener una medida mas precisa
+   long int tempMedia = 0;  //ya que el termómetro es un dispositivo que genera una salida con mucho ruido                     
    long int numMuestras = 0; 
-   float tempFinal;
+   int final = 0;
    
    for(numMuestras = 0; numMuestras < MUESTRAS; numMuestras++){
     //TEMPSENSOR es un pin interno el cual está conectado al termómetro
@@ -125,10 +163,9 @@ int leerTemperatura(){
    }                                          
   
   tempMedia /= MUESTRAS; //dividimos por el número de muestras 
-  tempMedia = tempMedia - 150; //Ajustamos el offset(desviación de cada micro)
-  
-  BTSerial.println("Temp: "+ String(tempMedia)); //
-}
+  tempMedia = tempMedia - 150; //Ajustamos el offset(desviación de cada micro)  
+  tempGlobal = tempMedia;
+ }
 
 
 int parpadeo(int freq, int veces, int pinNum){
@@ -164,4 +201,50 @@ int arranqueLuces(int freq, int veces){
   digitalWrite(ledEncendido, LOW); 
   delay(freq/2); 
   }
+}
+
+/****************************** FUNCIONES ACELROMETRO *******************************/
+
+void medirPosicion(){
+ p_buffer = readFrom(ADXL345ADDRESS, DATAADDRESS, LENGTH); //Lectura de los datos del acelerómetro
+
+ xAxis = (p_buffer[1] << 8) | p_buffer[0]; //El acelerómetro almacena el valor de cada eje en dos bytes por lo que 
+ yAxis = (p_buffer[3] << 8) | p_buffer[2]; //necesitamos hacer esto para tener el dato completo
+ zAxis = (p_buffer[5] << 8) | p_buffer[4];
+ 
+ scaledXAxis = SCALE2G * xAxis; //Escalamos el valor en "G"
+ scaledYAxis = SCALE2G * yAxis;
+ scaledZAxis = SCALE2G * zAxis;
+ 
+}
+
+void writeTo(int slave_Address, int address, int data){
+  
+	Wire.beginTransmission(slave_Address); //Ponemos en el bus la dirección del dispositivo con el que nos quereos comunicar
+	Wire.write(address);                   //Registro al que queremos acceder
+	Wire.write(data);                      //Dato que queremos poner en el registro
+	Wire.endTransmission();                //Terminar la transmisión
+}
+
+
+
+uint8_t* readFrom(int slave_Address, int address, int length){
+  
+  uint8_t buffer[length];                   //Buffer donde iremos guardando los datos que recibamos
+  
+  Wire.beginTransmission(slave_Address);    //Dirección del dispositivo con el que nos queremos comunicar
+  Wire.write(address);                      //Que registro al que queremos acceder
+  Wire.endTransmission();                 
+  
+  Wire.beginTransmission(slave_Address);    //Start repetido
+  Wire.requestFrom(slave_Address, length);  //Modo lectura y cuantos bytes queremos
+  
+  if(Wire.available() == length){         
+    for(uint8_t i = 0; i < length; i++){    //Leemos cada byte y rellenamos el buffer
+      buffer[i] = Wire.read();
+    }
+  }    
+  Wire.endTransmission();                 
+
+  return buffer;
 }
