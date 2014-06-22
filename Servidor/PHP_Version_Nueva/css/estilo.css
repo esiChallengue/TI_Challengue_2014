@@ -1,0 +1,148 @@
+/***************  Inicio Posicionamiento Web ******************/
+BODY {
+	  text-align : center;
+}
+#recuadroFondo {
+	width:1230px;
+	height:800px;
+	position: relative;
+
+}
+/**************** Fin Posicionamienot Web   ******************/
+
+/***************** Inicio Colores y Fuentes *******************/
+.letrageneral {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10pt;
+    font-family: arial, sans-serif;
+}
+
+.letraeventos {
+    font-weight: bold;
+    font-size: 12pt;
+	color: #FFFFFF;
+    font-family: arial, sans-serif;
+}
+
+.letratitulomediano {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14pt;
+    font-family: arial, sans-serif;
+}
+
+.letraplantilla {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+.rojo {color: rgb(255, 0, 0); }
+.verde {color: rgb(0, 192, 0);}
+
+
+/***************** Fin Colores y Fuentes *******************/
+
+/******** Inicio Secciones Laterales y Centrales ********/
+.zonas {
+	BORDER-RIGHT: #ffcc00 1px solid; 
+	PADDING-RIGHT: 10px; 
+	BORDER-TOP: #ffcc00 1px solid; 
+	PADDING-LEFT: 10px; 
+	BACKGROUND: #f3e785; 
+	PADDING-BOTTOM: 10px; 
+	MARGIN: 0px auto; 
+	FONT: 12px sans-serif; 
+	BORDER-LEFT: #ffcc00 1px solid; 
+	CURSOR: pointer; 
+	COLOR: #000000; 
+	PADDING-TOP: 10px; 
+	BORDER-BOTTOM: #ffcc00 1px solid; 
+	TEXT-ALIGN: left; 
+	TEXT-DECORATION: none
+}
+
+.zonas2 {
+	BORDER-RIGHT: #ffcc00 1px solid; 
+	PADDING-RIGHT: 10px; 
+	BORDER-TOP: #ffcc00 1px solid; 
+	PADDING-LEFT: 10px; 
+	background: #d2e3fb; 
+	PADDING-BOTTOM: 10px; 
+	MARGIN: 0px auto; 
+	FONT: 12px sans-serif; 
+	BORDER-LEFT: #ffcc00 1px solid; 
+	CURSOR: hand; 
+	COLOR: #000000; 
+	PADDING-TOP: 10px; 
+	BORDER-BOTTOM: #ffcc00 1px solid; 
+	TEXT-ALIGN: left; 
+	TEXT-DECORATION: none
+}
+
+.zonas3 {
+	BORDER-RIGHT: #ffcc00 1px solid; 
+	PADDING-RIGHT: 10px; 
+	BORDER-TOP: #ffcc00 1px solid; 
+	PADDING-LEFT: 10px; 
+	BACKGROUND: #f3e785; 
+	PADDING-BOTTOM: 10px; 
+	MARGIN: 0px auto; 
+	FONT: 12px sans-serif; 
+	BORDER-LEFT: #ffcc00 1px solid; 
+	CURSOR: normal; 
+	COLOR: #000000; 
+	PADDING-TOP: 10px; 
+	BORDER-BOTTOM: #ffcc00 1px solid; 
+	TEXT-ALIGN: left; 
+	TEXT-DECORATION: none;
+}
+
+.zonas4 {
+	BORDER-RIGHT: #ffcc00 1px solid; 
+	PADDING-RIGHT: 10px; 
+	BORDER-TOP: #ffcc00 1px solid; 
+	PADDING-LEFT: 10px; 
+	background: #CC0000; 
+	PADDING-BOTTOM: 10px; 
+	MARGIN: 0px auto; 
+	FONT: 12px sans-serif; 
+	BORDER-LEFT: #ffcc00 1px solid; 
+	COLOR: #000000; 
+	PADDING-TOP: 10px; 
+	BORDER-BOTTOM: #ffcc00 1px solid; 
+	TEXT-ALIGN: left; 
+	TEXT-DECORATION: none
+}
+/******** Fin Secciones Laterales y Centrales ********/
+/******** Inicio Seccion Noticias ********************/
+	span#marco {
+		width: 0px;
+		height: 0px;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		z-index: 100;
+		border: 2px solid #DD0000;
+		display: none;
+		background: transparent;
+	}
+	
+	div.contenedor {
+		position: relative;
+		width: 420px;
+		height: 204px;
+		margin: 0px;
+		padding: 0px;
+	}
+	
+	div.res {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		margin-left: 520px;
+		margin-top: 30px;
+	}
+/******** Fin Seccion Noticias ********************/

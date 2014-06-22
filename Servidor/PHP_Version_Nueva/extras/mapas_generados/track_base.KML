@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<Document>
+  <!-- Begin Style Definitions -->
+<!-- Normal track style -->
+    <Style id="track_n">
+      <IconStyle>
+        <Icon>
+          <href>http://earth.google.com/images/kml-icons/track-directional/track-none.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="lineStyle">
+      <LineStyle>
+        <color>99ffac59</color>
+        <width>3</width>
+      </LineStyle>
+    </Style>
+  <Folder>
+    <name>Area Features</name>
+    <description>Area Features</description>
+    <Placemark>
+      <description>Ruta 98377RF</description>
+      <name>Ruta 98377RF</name>
+      <styleUrl>#lineStyle</styleUrl>
+          <LineString>
+            <coordinates>
+            </coordinates>
+          </LineString>
+    </Placemark>
+  </Folder>
+</Document>
+</kml>

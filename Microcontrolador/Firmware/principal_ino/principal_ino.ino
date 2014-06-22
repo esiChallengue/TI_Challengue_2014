@@ -21,7 +21,7 @@
 
  SoftwareSerial BTSerial(RxD, TxD);
  const int MUESTRAS = 256;
- long int tempGlobal = 0;
+ float tempGlobal = 0;
 
  int sigoVivo = 0;
 
@@ -133,13 +133,13 @@ void loop()
   medirPosicion();
   delay(200);
   //Enviamos los resultados
-   BTSerial.print("temp:");
+   BTSerial.print("temp: ");
    BTSerial.print(tempGlobal);
-   BTSerial.print("|x-axis:"); //temperatura + x-axis + y-axis + z-axis
+   BTSerial.print(" |x-axis: "); //temperatura + x-axis + y-axis + z-axis
    BTSerial.print(scaledXAxis);
-   BTSerial.print("|y-axis:");
+   BTSerial.print(" |y-axis: ");
    BTSerial.print(scaledYAxis);
-   BTSerial.print("|z-axis:");
+   BTSerial.print(" |z-axis: ");
    BTSerial.print(scaledZAxis);
    BTSerial.print("\r\n");
   //Esperamos un rato para no gaste mucha batería
@@ -154,7 +154,7 @@ void loop()
    long int temp = 0;       // almacenamos el valor leido de la temperatura
    long int tempMedia = 0;  //ya que el termómetro es un dispositivo que genera una salida con mucho ruido                     
    long int numMuestras = 0; 
-   int final = 0;
+   float final = 0;
    
    for(numMuestras = 0; numMuestras < MUESTRAS; numMuestras++){
     //TEMPSENSOR es un pin interno el cual está conectado al termómetro
@@ -164,7 +164,7 @@ void loop()
   
   tempMedia /= MUESTRAS; //dividimos por el número de muestras 
   tempMedia = tempMedia - 150; //Ajustamos el offset(desviación de cada micro)  
-  tempGlobal = tempMedia;
+  tempGlobal = tempMedia * 0.10;
  }
 
 

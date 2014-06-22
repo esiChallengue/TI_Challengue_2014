@@ -1,0 +1,33 @@
+var b_txt = '';
+
+// write the badge
+	
+	
+		 	 		
+	b_txt+= '<div class="flickr_badge_image" id="flickr_badge_image1"><a href="http://www.flickr.com/photos/5hz/8639010506/"><img src="http://farm9.staticflickr.com/8527/8639010506_ff227e2b2f_s.jpg" alt="Una foto de Flickr" title="CMUCAM" height="75" width="75"></a></div>';
+	
+		 	 		
+	b_txt+= '<div class="flickr_badge_image" id="flickr_badge_image2"><a href="http://www.flickr.com/photos/5hz/8638393794/"><img src="http://farm9.staticflickr.com/8406/8638393794_7310239ab9_s.jpg" alt="Una foto de Flickr" title="Controlador iluminación escalera" height="75" width="75"></a></div>';
+	
+		 	 		
+	b_txt+= '<div class="flickr_badge_image" id="flickr_badge_image3"><a href="http://www.flickr.com/photos/5hz/8642458753/"><img src="http://farm9.staticflickr.com/8534/8642458753_3f96f716df_s.jpg" alt="Una foto de Flickr" title="Creación de PCB prototipo" height="75" width="75"></a></div>';
+	
+		 	 		
+	b_txt+= '<div class="flickr_badge_image" id="flickr_badge_image4"><a href="http://www.flickr.com/photos/5hz/8637904197/"><img src="http://farm9.staticflickr.com/8251/8637904197_edbfb48f6e_s.jpg" alt="Una foto de Flickr" title="Interfaz de control mediante un control de wii" height="75" width="75"></a></div>';
+	
+		 	 		
+	b_txt+= '<div class="flickr_badge_image" id="flickr_badge_image5"><a href="http://www.flickr.com/photos/5hz/8558795340/"><img src="http://farm9.staticflickr.com/8230/8558795340_535e4fcb71_s.jpg" alt="Una foto de Flickr" title="Hertzmóvil" height="75" width="75"></a></div>';
+	
+		 	 		
+	b_txt+= '<div class="flickr_badge_image" id="flickr_badge_image6"><a href="http://www.flickr.com/photos/5hz/8557579833/"><img src="http://farm9.staticflickr.com/8091/8557579833_5f81276616_s.jpg" alt="Una foto de Flickr" title="Otro ángulo" height="75" width="75"></a></div>';
+	
+		 	 		
+	b_txt+= '<div class="flickr_badge_image" id="flickr_badge_image7"><a href="http://www.flickr.com/photos/5hz/8557690593/"><img src="http://farm9.staticflickr.com/8104/8557690593_268a256c78_s.jpg" alt="Una foto de Flickr" title="Hertzmóvil" height="75" width="75"></a></div>';
+	
+		 	 		
+	b_txt+= '<div class="flickr_badge_image" id="flickr_badge_image8"><a href="http://www.flickr.com/photos/5hz/8673178966/"><img src="http://farm9.staticflickr.com/8390/8673178966_0c6409b896_s.jpg" alt="Una foto de Flickr" title="Inauguración" height="75" width="75"></a></div>';
+
+
+b_txt += '<span style="position:absolute;left:-999em;top:-999em;visibility:hidden" class="flickr_badge_beacon"><img src="http://geo.yahoo.com/p?s=792600102&t=5e2b44dc0e873f064777f26b628c3fd8&fl_ev=0&lang=es&intl=es" width="0" height="0" alt="" /></span>';
+
+document.write(b_txt);
