@@ -9,10 +9,9 @@
                         
                           <div id="Stage" class="EDGE-38908700"></div>
                         
-                        	<div id="menuNeveraDashboardIn"><p>
+                        	<div id="menuNeveraDashboardIn">
                         		   <? include("consultarDispositivo_neveraIn.php"); ?>
-
-                        </p></div>
+                          </div>
 
 
                         </div>

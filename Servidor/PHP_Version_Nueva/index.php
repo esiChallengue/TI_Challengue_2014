@@ -28,11 +28,12 @@
  if ($zona == "consultarDispositivo"){ include("zonas/consultarDispositivo.php");}	
  if ($zona == "registrarEvento"){
  	//Metodo para recibir los parametros por medio de GET
+ 	if(($temperatura != "") AND ($temperatura != "desconocida")){
  	$insertar = "INSERT INTO registros (tracking_number, notas, nombreOperario, apellidosOperario, dniOperario, numeroTelefono, latitud, longitud, temperatura, xaxis, yaxis, zaxis) 
       VALUES ('$tracking_number', '$notas', '$nombreOperario', '$apellidosOperario', '$dniOperario', '$numeroTelefono', '$latitud', '$longitud', 
       '$temperatura', '$xAxis', '$yAxis', '$zAxis')";
       mysql_query($insertar, $conn);
-      mysql_close($conn);
+   }   mysql_close($conn);
  	}
  
  include("piedepagina.php"); 

@@ -4,7 +4,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<title>Panel Control - TrackingNevera</title>
        
-        <link rel="shortcut icon" href="/css/favicon.ico">
+        <link rel="shortcut icon" href="/images/favicon.ico">
        
         <!-- CSS Reset -->
 		<link rel="stylesheet" type="text/css" href="css/reset.css" media="screen" />
@@ -54,11 +54,13 @@
             }
             
             function saveMapConfig(){
-            	var numCoord = $( "#selectNumCoordenadasMapa option:selected" ).text();
-            	var refreshco = $( "#selectRefrescoMapa option:selected" ).text();
-            	<? $url1 = "$_SERVER[REQUEST_URI]&reload=menuMapaDashboard&cmd=saveMapConfig&numeroCoorMapa=&refrescoMapa="; ?>
-            	var url2 = '<? echo $url1; ?>'+'asdfe';
+            	var numCoord = $( "#selectNumCoordenadasMapa" ).val();
+            	var refreshco = $( "#selectRefrescoMapa" ).val();
+            	var url1 = '<? echo $_SERVER[REQUEST_URI]; ?>' ;
+            	var url2 = ''+url1+'&reload=menuMapaDashboard&cmd=saveMapConfig&numeroCoorMapa='+numCoord+'&refrescoMapa='+refreshco+'';
+            	           	
             	$("#menuMapaDashboard").load(url2);
+
             }
     </script>
 
