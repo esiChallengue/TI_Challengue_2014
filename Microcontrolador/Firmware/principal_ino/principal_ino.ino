@@ -59,7 +59,7 @@ void setup()
     delay(100); // Nos aseguramos de que pille que el pin está apagado
     digitalWrite(pinRst, HIGH); //Encendemos el modulo bluetooth
     delay(500); //Espereamos un poco a que se caliente el chip
-    BTSerial.begin(19200); //Baudios configurados 19200
+    BTSerial.begin(57600); //Baudios configurados 19200
     BTSerial.flush();
     delay(500);
     //BTSerial.println("Conexión Establecida");
@@ -71,9 +71,9 @@ void setup()
     BTSerial.begin(38400); //Baudios necesarios para el modo programacion
     BTSerial.flush();
     delay(1000);
-    BTSerial.print("at+name=95588RA\r\n"); //Comando para cambiar el nombre del enlace
+    //BTSerial.print("at+name=75595RF\r\n"); //Comando para cambiar el nombre del enlace
     delay(600);
-    //BTSerial.print("AT+UART=19200,0,0\r\n"); //Comando para ajustar los baudios
+    //BTSerial.print("AT+UART=57600,0,0\r\n"); //Comando para ajustar los baudios
   }
   
   //Configurar el ADC para que use la referencia interna de 1.5V
@@ -92,7 +92,7 @@ void loop()
 {
  
   //Si nos pasamos de veces sin que el movil contacte con el micro reiniciamos la conexión
-  if (sigoVivo >= 12){
+  if (sigoVivo >= 20){
   BTSerial.println("Reiniciando conexion :(");
   digitalWrite(ledTx, HIGH);
   digitalWrite(ledRx, LOW); //Apagamos el led que nos indica que la conexión está viva
@@ -143,7 +143,7 @@ void loop()
    BTSerial.print(scaledZAxis);
    BTSerial.print("\r\n");
   //Esperamos un rato para no gaste mucha batería
-   delay(5000);  
+   delay(3500);  
 }
 
 
